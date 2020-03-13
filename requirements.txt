@@ -16,5 +16,5 @@ requests==2.23.0
 rq==0.13.0
 selenium==3.14.1
 soupsieve==2.0
-urllib3==1.23
+urllib3==1.24.2
 Werkzeug==0.14.1
