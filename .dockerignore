@@ -1,0 +1,8 @@
+/src/assets/
+/src/uploads/
+/src/venv/
+/src/test/
+*.sh
+*.pem
+*.env
+!/src/wait-for-selenium.sh

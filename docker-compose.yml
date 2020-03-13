@@ -1,0 +1,15 @@
+version: '3'
+services:
+  bot:
+    image: gott50/breakthrough-bot
+    depends_on:
+      - selenium
+    links:
+      - selenium:selenium
+    env_file:
+      - .env
+  selenium:
+    image: selenium/standalone-chrome:3.141.59
+    shm_size: 128M
+    ports:
+    - 4444:4444

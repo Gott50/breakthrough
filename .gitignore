@@ -1,0 +1,10 @@
+.idea
+*.sh
+/src/assets/
+/src/uploads/
+/src/venv/
+/src/test/
+*.pem
+!/src/wait-for-selenium.sh
+!/setup.sh
+*.env
