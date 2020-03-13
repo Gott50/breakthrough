@@ -17,4 +17,4 @@ rq==0.13.0
 selenium==3.14.1
 soupsieve==2.0
 urllib3==1.23
-Werkzeug==0.14.1
+Werkzeug==0.15.3
