@@ -27,16 +27,17 @@ class Bot:
                  proxy_port: int = 0,
                  print=print,
                  sleep_time=2):
-        print("Bot(selenium_local_session=%s, page_delay=%s, headless_browser=%s, proxy_ip=%s, proxy_chrome_extension=%s, proxy_port: int = %s, print=%s, sleep_time=%s)" %
-              (selenium_local_session,
-               page_delay,
-               headless_browser,
-               proxy_ip,
-               proxy_chrome_extension,
-               proxy_port,
-               print,
-               sleep_time)
-              )
+        print(
+            "Bot(selenium_local_session=%s, page_delay=%s, headless_browser=%s, proxy_ip=%s, proxy_chrome_extension=%s, proxy_port: int = %s, print=%s, sleep_time=%s)" %
+            (selenium_local_session,
+             page_delay,
+             headless_browser,
+             proxy_ip,
+             proxy_chrome_extension,
+             proxy_port,
+             print,
+             sleep_time)
+            )
 
         self.sleep_time = sleep_time
         self.print = print
@@ -75,8 +76,8 @@ class Bot:
             user_agent = "Chrome"
             chrome_options.add_argument('user-agent={user_agent}'
                                         .format(user_agent=user_agent))
-        capabilities = DesiredCapabilities.CHROME
         # Proxy for chrome
+        capabilities = DesiredCapabilities.CHROME
         if self.proxy_ip and (self.proxy_port > 0):
             capabilities['proxy'] = {
                 'httpProxy': "%s:%i" % (self.proxy_ip, self.proxy_port),
@@ -131,8 +132,22 @@ class Bot:
         chrome_options.add_experimental_option("excludeSwitches", ['enable-automation'])
         # mobile_emulation = {"deviceName": "iPhone 5"}
         # chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
+
+        # Proxy for chrome
+        capabilities = chrome_options.to_capabilities()
+        if self.proxy_ip and (self.proxy_port > 0):
+            capabilities['proxy'] = {
+                'httpProxy': "%s:%i" % (self.proxy_ip, self.proxy_port),
+                'ftpProxy': "%s:%i" % (self.proxy_ip, self.proxy_port),
+                'sslProxy': "%s:%i" % (self.proxy_ip, self.proxy_port),
+                'noProxy': None,
+                'proxyType': "MANUAL",
+                'class': "org.openqa.selenium.Proxy",
+                'autodetect': False
+            }
+
         self.browser = webdriver.Remote(command_executor=selenium_url,
-                                           desired_capabilities=chrome_options.to_capabilities())
+                                        desired_capabilities=capabilities)
 
         message = "Session started!"
 
