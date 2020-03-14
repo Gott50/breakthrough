@@ -9,9 +9,11 @@ def is_time():
 
 i = 0
 while True:
-    sleep(50 * 60)
+    while not is_time():
+        sleep(50 * 60)
+
     print("result %s: %s " % (i, create_task(sleep=50)))
     i += 1
 
-    while not is_time():
-        sleep(50 * 60)
+    sleep(50 * 60)
+
