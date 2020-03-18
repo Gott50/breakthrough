@@ -1,6 +1,7 @@
 from bot.tasks import create_task
 from bot.time_util import sleep, get_time
 
+factor = 2.5
 
 def is_time():
     hour = int(get_time('this_hour'))
@@ -10,10 +11,10 @@ def is_time():
 i = 0
 while True:
     while not is_time():
-        sleep(50 * 60)
+        sleep(50 * 60 / factor)
 
     print("result %s: %s " % (i, create_task(sleep=50)))
     i += 1
 
-    sleep(50 * 60)
+    sleep(50 * 60 / factor)
 
