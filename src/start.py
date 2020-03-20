@@ -13,8 +13,9 @@ while True:
     while not is_time():
         sleep(50 * 60 / factor)
 
-    print("result %s: %s " % (i, create_task(sleep=50)))
-    i += 1
+    result = create_task(sleep=50)
+    i += result
+    print("result %s: %s " % (i, result))
 
     sleep(50 * 60 / factor)
 
