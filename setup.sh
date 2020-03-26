@@ -5,6 +5,7 @@ docker-compose push
 
 HOST=$1
 URL=$2
+FACTOR=10
 
 ssh -o StrictHostKeychecking=no -tt -i breakthrough-bot.pem $HOST <<-'ENDSSH'
 sudo systemctl start docker
@@ -18,5 +19,5 @@ sudo docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs -r su
 exit
 ENDSSH
 
-ssh -o StrictHostKeychecking=no -tt -i breakthrough-bot.pem $HOST "sudo docker run -d --net=bridge --link selenium:selenium --name bot -e URL=$URL gott50/breakthrough-bot"
+ssh -o StrictHostKeychecking=no -tt -i breakthrough-bot.pem $HOST "sudo docker run -d --net=bridge --link selenium:selenium --name bot -e URL=$URL -e FACTOR=$FACTOR gott50/breakthrough-bot"
 

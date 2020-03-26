@@ -1,7 +1,9 @@
+import os
+
 from bot.tasks import create_task
 from bot.time_util import sleep, get_time
 
-factor = 5
+factor = int(os.environ.get('FACTOR', '1'))
 counter = 0
 
 
@@ -14,7 +16,7 @@ while True:
     while not is_time():
         sleep(50 * 60 / factor)
 
-    result = create_task(sleep=50)
+    result = create_task(sleep=50, factor=factor)
     counter += result
     print("result %s: %s " % (counter, result))
 

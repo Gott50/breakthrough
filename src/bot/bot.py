@@ -158,7 +158,7 @@ class Bot:
 
         return self
 
-    def act(self, url=None):
+    def act(self, url=None, factor=1):
         result = 0
         try:
             driver = self.browser
@@ -189,7 +189,7 @@ class Bot:
                     ActionChains(driver).move_to_element(c).click(c).perform()
                     result += 1
                     break
-            sleep(self.sleep_time * 10)
+            sleep(self.sleep_time * 10 / factor)
 
         except Exception as e:
             self.print(e)

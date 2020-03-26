@@ -4,14 +4,14 @@ from bot import Bot
 from bot.proxy import get_proxy
 
 
-def create_task(sleep=2, print=print):
+def create_task(sleep=2, print=print, factor=1):
     proxy = get_proxy()
     bot = init_Bot(proxy=proxy, sleep=sleep, print=print)
     result = 0
     try:
         if not proxy["port"] is None:
             print('Starting Bot at: %s' % proxy)
-            result = bot.act()
+            result = bot.act(factor=factor)
 
     except Exception as e:
         print(e)
