@@ -68,8 +68,9 @@ def is_proxy_valid(proxy):
         candidate = "https://%s:%s" % (proxy["ip"], proxy["port"])
         response = requests.get(ifconfig, proxies={"https": candidate}, timeout=10)
     except Exception as e:
-        print("Proxy not valid: %s" % proxy)
-        print(e)
+        if os.environ.get('DEBUG', 'False') == 'True':
+            print("Proxy not valid: %s" % proxy)
+            print(e)
         return False
 
     return True
