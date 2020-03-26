@@ -1,4 +1,5 @@
 import json
+import os
 import random
 import string
 import requests
@@ -62,7 +63,8 @@ def is_proxy_valid(proxy):
     try:
         ifconfig = random_ifconfig()
         response = requests.get(ifconfig)
-        print("we are online on: %s" % ifconfig)
+        if os.environ.get('DEBUG', 'False') == 'True':
+            print("we are online on: %s" % ifconfig)
         candidate = "https://%s:%s" % (proxy["ip"], proxy["port"])
         response = requests.get(ifconfig, proxies={"https": candidate}, timeout=10)
     except Exception as e:
@@ -79,7 +81,8 @@ def get_unused_proxies():
         j = json.loads(contents.text)
         proxies = j['data']
 
-        print("fetch_proxies_pubproxy: %s" % proxies)
+        if os.environ.get('DEBUG', 'False') == 'True':
+            print("fetch_proxies_pubproxy: %s" % proxies)
         results = list(map(lambda proxy: {"ip": proxy["ip"], "port": int(proxy["port"]), "count": 0}, proxies))
         return results
     except Exception as e:
@@ -92,7 +95,8 @@ def fetch_proxies_pubproxy():
         j = json.loads(contents.text)
         proxies = j['data']
 
-        print("fetch_proxies_pubproxy: %s" % proxies)
+        if os.environ.get('DEBUG', 'False') == 'True':
+            print("fetch_proxies_pubproxy: %s" % proxies)
         results = list(map(lambda proxy: {"ip": proxy["ip"], "port": int(proxy["port"]), "count": 0}, proxies))
         return results
     except Exception as e:
@@ -105,7 +109,8 @@ def fetch_proxies_getproxylist():
         j = json.loads(contents.text)
         proxies = [j]
 
-        print("fetch_proxies_getproxylist: %s" % proxies)
+        if os.environ.get('DEBUG', 'False') == 'True':
+            print("fetch_proxies_getproxylist: %s" % proxies)
         results = list(map(lambda proxy: {"ip": proxy["ip"], "port": int(proxy["port"]), "count": 0}, proxies))
         return results
     except Exception as e:
@@ -119,7 +124,8 @@ def fetch_proxies_github():
         j = json.loads(contents.text)
         proxies = list(filter(lambda p: p['country'] == 'Germany' and p['proto'] == 'http', j))
 
-        print("fetch_proxies_github: %s" % proxies)
+        if os.environ.get('DEBUG', 'False') == 'True':
+            print("fetch_proxies_github: %s" % proxies)
         results = list(map(lambda proxy: {"ip": proxy["ip"], "port": int(proxy["port"]), "count": 0}, proxies))
         random.shuffle(results)
         return results
