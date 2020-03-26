@@ -11,7 +11,7 @@ sudo systemctl start docker
 sudo docker stop /selenium /bot
 sudo docker rm /bot
 
-sudo docker run -d --net=bridge --shm-size=128M --name selenium selenium/standalone-chrome:3.141.59
+sudo docker run -d --net=bridge --shm-size=2g --name selenium selenium/standalone-chrome:3.141.59
 sudo docker start /selenium
 sudo docker pull gott50/breakthrough-bot
 sudo docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs -r sudo docker rmi -f
