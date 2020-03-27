@@ -38,6 +38,8 @@ class Bot:
              print,
              sleep_time)
             )
+        print('Session started - {}'.format(
+            datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
 
         self.sleep_time = sleep_time
         self.print = print
@@ -114,8 +116,6 @@ class Bot:
                 float(matches.groups()[0]), Settings.chromedriver_min_version))
 
         self.browser.implicitly_wait(self.page_delay)
-        self.print('Session started - %s'
-                   % (datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
 
         return self
 
