@@ -5,7 +5,7 @@ from bot.time_util import sleep, get_time
 
 factor = int(os.environ.get('FACTOR', '1'))
 start = 8
-end = 22
+end = 23
 counter = 0
 
 print("factor: %s" % factor)

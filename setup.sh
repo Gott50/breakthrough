@@ -5,7 +5,7 @@ docker-compose push
 
 HOST=$1
 URL=$2
-FACTOR=15
+FACTOR=100
 
 ssh -o StrictHostKeychecking=no -tt -i breakthrough-bot.pem $HOST <<-'ENDSSH'
 sudo systemctl start docker

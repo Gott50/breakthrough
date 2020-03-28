@@ -1,1 +1,1 @@
-1 8-23/1 * * * sudo docker stop bot && sudo docker start bot
+45 7 * * * sudo docker stop bot && sudo docker start bot
