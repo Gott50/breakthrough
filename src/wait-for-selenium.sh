@@ -1,6 +1,8 @@
 #!/bin/bash
 # wait-for-selenium.sh
 
+date
+
 set -e
 
 url="$1"
