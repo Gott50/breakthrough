@@ -8,6 +8,7 @@ start = 8
 end = 22
 counter = 0
 
+print("factor: %s" % factor)
 print("should do about: %s " % ((end - start) * 60 / (10 + 100 / factor)))
 
 
