@@ -21,9 +21,9 @@ while True:
     while not is_time():
         print("hour: %s" % get_time('this_hour'))
         sleep(50 * 60 / factor)
+    sleep(50 * 60 / factor)
 
     result = create_task(sleep=50, factor=factor)
     counter += result
     print("result %s: %s " % (counter, result))
 
-    sleep(50 * 60 / factor)
