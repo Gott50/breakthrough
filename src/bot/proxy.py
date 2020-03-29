@@ -137,7 +137,7 @@ def fetch_proxies_github():
 
 def fetch_proxies_free_proxy_cz():
     try:
-        contents = requests.get("http://free-proxy.cz/en/proxylist/country/DE/https/ping/all", timeout=10)
+        contents = requests.get("http://free-proxy.cz/en/proxylist/country/DE/https/ping/all", timeout=20)
         soup = BeautifulSoup(contents.text, "html.parser")
 
         soup_ips = soup.select("#proxy_list > tbody:nth-child(2) > tr > td:nth-child(1)")
